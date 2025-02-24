@@ -1,0 +1,56 @@
+.div-employees-title-and-search {
+    width: 204dvh;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding: 64px 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media (max-width: 660px){
+        flex-direction: column;
+        padding-left: 12px;
+        width: 50dvh;
+    }
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24.42px;
+    font-family: Helvetica Neue;
+    color: #1C1C1C;
+}
+
+.input-div {
+    width: 287px;
+    height: 24px;
+    border-radius: 8px;
+    border: 1px solid #DFDFDF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: #FFF;
+
+    @media (max-width: 660px){
+        margin-top: 10.6px;
+        width: 335px;
+    }
+}
+
+.placeholder {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.09px;
+    font-family: Helvetica Neue;
+    color: #9E9E9E;
+}
+
+.input {
+    outline: none;
+    border: none;
+    position: absolute;
+    margin-left: -72px;
+    background: transparent;
+}

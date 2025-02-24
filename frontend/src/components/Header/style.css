@@ -1,0 +1,18 @@
+.header {
+    margin: 0 auto;
+    width: 215.5dvh;
+    height: 60px;
+    background-color: #FFF;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    box-shadow: 0px 2px 8px 0px #00000033;
+
+    @media (max-width: 660px){
+        width: 100dvh;
+    };
+
+    @media (max-width: 400px){
+        width: 60dvh;
+    }
+}
