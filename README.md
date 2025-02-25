@@ -16,7 +16,7 @@ O projeto foi desenvolvido utilizando:
 * axios (para o consumo da api);
 * npm (gerenciador de pacotes).
 
-```IMPORTANTE! ESSE PROJETO NÃO FEZ USO DE FRAMEWORKS DE ESTILO, TENDO SIDO DESENVOLVIDO APENAS COM HTML E CSS!!```
+>IMPORTANTE! ESSE PROJETO NÃO FEZ USO DE FRAMEWORKS DE ESTILO, TENDO SIDO DESENVOLVIDO APENAS COM HTML E CSS!!
 
 ### Funcionalidades desenvolvidas
 * Filtrar funcionários por nome, cargo ou telefone;
