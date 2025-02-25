@@ -36,7 +36,7 @@ export function TableEmployeesMobile({ employees, search, ...props }: TableProps
                                     <img src={item.image} alt="profile image" className="profile-image"/>
                                 </td>
                                 <td className="table-row-text">{item.name}</td>
-                                <td className="table-row-text" style={{ textAlign: "right" }} onClick={() => handleClick(item.id)}>
+                                <td className="table-row-text" onClick={() => handleClick(item.id)}>
                                     <img src={(idEmployeerSection === item.id) ? ArrowUp : ArrowDown } alt="Arrow Icon" className="icon-arrow"/>
                                 </td>           
                             </tr>

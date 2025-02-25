@@ -22,13 +22,13 @@ export function TableEmployeesDesktop({ employees, search, ...props}: TableProps
                     
                     return (
                         <tr key={item.id} className="table-row">
-                            <td className="table-row-text">
+                            <td className="table-row-text" style={{ paddingLeft: "32px" }}>
                                 <img src={item.image} alt="profile image" className="profile-image"/>
                             </td>
                             <td className="table-row-text">{item.name}</td>
                             <td className="table-row-text">{item.job}</td>
                             <td className="table-row-text">{admissionDate}</td>
-                            <td className="table-row-text">{maskedPhone}</td>
+                            <td className="table-row-text" style={{ paddingRight: "32px" }}>{maskedPhone}</td>
                         </tr>
                     )
                 })
