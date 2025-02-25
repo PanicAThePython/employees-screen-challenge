@@ -51,6 +51,10 @@
     outline: none;
     border: none;
     position: absolute;
-    margin-left: -72px;
     background: transparent;
+    width: 300px;
+}
+
+.input:focus {
+    margin-left: 0px !important;
 }

@@ -1,5 +1,6 @@
+import { ComponentProps } from "react"
 import "../../index.css"
-export function TableEmployeesDesktop (){
+export function TableEmployeesDesktop(props: ComponentProps<"table">){
 
     const mock = [
         {
@@ -33,7 +34,7 @@ export function TableEmployeesDesktop (){
     ]
 
     return (
-        <table className="table">
+        <table className="table" {...props}>
             <tr className="table-header">
                 <th><h2 className="table-title">FOTO</h2></th>
                 <th><h2 className="table-title">NOME</h2></th>
