@@ -1,5 +1,5 @@
-import "./style.css"
-export function TableEmployees (){
+import "../../index.css"
+export function TableEmployeesDesktop (){
 
     const mock = [
         {

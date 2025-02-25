@@ -1,0 +1,29 @@
+.table-person-content {
+    background-color: #FFF;
+    width: 335px;
+    height: 113px;
+    padding: 13.5px 16px;
+}
+
+.table-person-content-div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.table-title-person-content {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.54px;
+    font-family: Helvetica Neue;
+    color: #1C1C1C;
+    padding: 0 20px;
+}
+
+.table-person-data-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.09px;
+    font-family: Helvetica Neue;
+    color: #1C1C1C;
+}

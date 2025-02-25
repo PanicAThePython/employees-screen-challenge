@@ -2,7 +2,8 @@ import { Header } from "./components/Header"
 import './assets/fonts.css'
 import './App.css'
 import Search from "./assets/icons/Search.svg"
-import { TableEmployees } from "./components/TableEmployees"
+// import { TableEmployeesDesktop } from "./components/TableEmployeesDesktop"
+import { TableEmployeesMobile } from "./components/TableEmployeesMobile"
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         </div>
       </div>
 
-      <TableEmployees/>
+      <TableEmployeesMobile />
     </main>
   )
 }
