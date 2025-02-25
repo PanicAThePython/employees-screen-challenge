@@ -1,38 +1,9 @@
-import { ComponentProps } from "react"
-import "../../index.css"
-export function TableEmployeesDesktop(props: ComponentProps<"table">){
+import "../../global.css"
+import { getFormattedDate } from "../../utils/formattingDate"
+import { getFormattedPhone } from "../../utils/formattingPhone"
+import { TableProps } from "../../utils/TableType"
 
-    const mock = [
-        {
-            foto: "dhfskhfkjhf",
-            nome: "Teste silva",
-            cargo: "dev front",
-            data: "03/12/2020",
-            telefone: "47 99999-3333"
-        },
-        {
-            foto: "dhfskhfkjhf",
-            nome: "Teste silva",
-            cargo: "dev front",
-            data: "03/12/2020",
-            telefone: "47 99999-3333"
-        },
-        {
-            foto: "dhfskhfkjhf",
-            nome: "Teste silva",
-            cargo: "dev front",
-            data: "03/12/2020",
-            telefone: "47 99999-3333"
-        },
-        {
-            foto: "dhfskhfkjhf",
-            nome: "Teste silva",
-            cargo: "dev front",
-            data: "03/12/2020",
-            telefone: "47 99999-3333"
-        }
-    ]
-
+export function TableEmployeesDesktop({ employees, search, ...props}: TableProps){
     return (
         <table className="table" {...props}>
             <tr className="table-header">
@@ -43,16 +14,26 @@ export function TableEmployeesDesktop(props: ComponentProps<"table">){
                 <th><h2 className="table-title">TELEFONE</h2></th>
             </tr>
 
-            {mock && mock.map((item, index) => (
-                <tr key={index} className="table-row">
-                    <td className="table-row-text">{item.foto}</td>
-                    <td className="table-row-text">{item.nome}</td>
-                    <td className="table-row-text">{item.cargo}</td>
-                    <td className="table-row-text">{item.data}</td>
-                    <td className="table-row-text">{item.telefone}</td>
-                </tr>
-            ))}
-            
+            {employees && employees
+                .filter(({name, job, phone}) => name.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || job.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || phone.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+                .map((item) => {
+                    const admissionDate = getFormattedDate(item.admission_date)
+                    const maskedPhone = getFormattedPhone(item.phone)
+                    
+                    return (
+                        <tr key={item.id} className="table-row">
+                            <td className="table-row-text">
+                                <img src={item.image} alt="profile image" className="profile-image"/>
+                            </td>
+                            <td className="table-row-text">{item.name}</td>
+                            <td className="table-row-text">{item.job}</td>
+                            <td className="table-row-text">{admissionDate}</td>
+                            <td className="table-row-text">{maskedPhone}</td>
+                        </tr>
+                    )
+                })
+            }
+        
         </table>
     )
 }

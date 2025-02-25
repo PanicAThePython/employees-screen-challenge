@@ -1,48 +1,19 @@
-import "../../index.css"
+import "../../global.css"
 import "./style.css"
 import ArrowDown from "../../assets/icons/ArrowDown.svg"
 import ArrowUp from "../../assets/icons/ArrowUp.svg"
-import { ComponentProps, useState } from "react"
+import { useState } from "react"
+import { TableProps } from "../../utils/TableType"
+import { getFormattedDate } from "../../utils/formattingDate"
+import { getFormattedPhone } from "../../utils/formattingPhone"
 
-export function TableEmployeesMobile(props: ComponentProps<"table">){
-
+export function TableEmployeesMobile({ employees, search, ...props }: TableProps){
     const [idEmployeerSection, setIdEmployeerSection] = useState<number>(-1)
 
     const handleClick = (index: number) => {
         if(idEmployeerSection !== index) setIdEmployeerSection(index)
         else setIdEmployeerSection(-1)
     }
-
-    const mock = [
-        {
-            foto: "dhfskhfkjhf",
-            nome: "Teste silva",
-            cargo: "dev front",
-            data: "03/12/2020",
-            telefone: "47 99999-3333"
-        },
-        {
-            foto: "dhfskhfkjhf",
-            nome: "Teste silva",
-            cargo: "dev front",
-            data: "03/12/2020",
-            telefone: "47 99999-3333"
-        },
-        {
-            foto: "dhfskhfkjhf",
-            nome: "Teste silva",
-            cargo: "dev front",
-            data: "03/12/2020",
-            telefone: "47 99999-3333"
-        },
-        {
-            foto: "dhfskhfkjhf",
-            nome: "Teste silva",
-            cargo: "dev front",
-            data: "03/12/2020",
-            telefone: "47 99999-3333"
-        }
-    ]
 
     return (
         <table className="table" {...props}>
@@ -52,32 +23,42 @@ export function TableEmployeesMobile(props: ComponentProps<"table">){
                 <th><h2 className="icon-white-circle">{'\u26AA'}</h2></th>
             </tr>
 
-            {mock && mock.map((item, index) => (
-                <>
-                    <tr key={index} className="table-row">
-                        <td className="table-row-text">{item.foto}</td>
-                        <td className="table-row-text">{item.nome}</td>
-                        <td className="table-row-text" onClick={() => handleClick(index)}>
-                            <img src={(idEmployeerSection === index) ? ArrowUp : ArrowDown } alt="Arrow Icon" className="icon-arrow"/>
-                        </td>           
-                    </tr>
+            {employees && employees
+                .filter(({name, job, phone}) => name.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || job.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || phone.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+                .map((item) => {
+                    const admissionDate = getFormattedDate(item.admission_date)
+                    const maskedPhone = getFormattedPhone(item.phone)
                     
-                    <td className="table-person-content" colSpan={3} hidden={(idEmployeerSection !== index)}>
-                        <div className="table-person-content-div">
-                            <span className="table-title-person-content">Cargo</span> 
-                            <span className="table-person-data-text">{item.cargo}</span>
-                        </div>
-                        <div className="table-person-content-div">
-                            <span className="table-title-person-content">Data de admissão</span> 
-                            <span className="table-person-data-text">{item.data}</span>
-                        </div>
-                        <div className="table-person-content-div">
-                            <span className="table-title-person-content">Telefone</span> 
-                            <span className="table-person-data-text">{item.telefone}</span>
-                        </div>
-                    </td>         
-                </>
-            ))}
+                    return (
+                        <>
+                            <tr key={item.id} className="table-row">
+                                <td className="table-row-text">
+                                    <img src={item.image} alt="profile image" className="profile-image"/>
+                                </td>
+                                <td className="table-row-text">{item.name}</td>
+                                <td className="table-row-text" onClick={() => handleClick(item.id)}>
+                                    <img src={(idEmployeerSection === item.id) ? ArrowUp : ArrowDown } alt="Arrow Icon" className="icon-arrow"/>
+                                </td>           
+                            </tr>
+                            
+                            <td className="table-person-content" colSpan={3} hidden={(idEmployeerSection !== item.id)}>
+                                <div className="table-person-content-div">
+                                    <span className="table-title-person-content">Cargo</span> 
+                                    <span className="table-person-data-text">{item.job}</span>
+                                </div>
+                                <div className="table-person-content-div">
+                                    <span className="table-title-person-content">Data de admissão</span> 
+                                    <span className="table-person-data-text">{admissionDate}</span>
+                                </div>
+                                <div className="table-person-content-div">
+                                    <span className="table-title-person-content">Telefone</span> 
+                                    <span className="table-person-data-text">{maskedPhone}</span>
+                                </div>
+                            </td>         
+                        </>
+                    )
+                })
+            }
             
         </table>
     )
